@@ -14,7 +14,7 @@ class UserControls{
         let body = req.body,
         password = helper.createHash(body.password);
         
-        let query = `insert into users(id, name, email, phone, password) values (null, "${body.name}", "${body.email}", "${body.phone}", "${password}")`;
+        let query = `insert into users(id, email, phone, password, first_name, last_name, username) values (null, "${body.email}", "${body.phone}", "${password}", "${body.firstName}", "${body.lastName}", "${body.username}")`;
         console.log(query)
         this.dbConn.query(query, (error, results)=>{
             if(error){

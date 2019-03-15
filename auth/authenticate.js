@@ -7,7 +7,7 @@ const helper = require('../core/helper')
 class Auth{
     login(req, res){
         let body = req.body
-        if(!body.email && !body.password){
+        if(!body.username && !body.password){
             let response = {
                 msg: "Provide email and password",
                 success: false
@@ -17,8 +17,7 @@ class Auth{
         const conn = new db()
         body.password = helper.createHash(body.password)
         console.log(body.password)
-        console.log(helper.createHash("Thanos@123"))
-        let query = `select * from users where users.email="${body.email}" and users.password="${body.password}" limit 1`;
+        let query = `select * from users where users.username="${body.username}" and users.password="${body.password}" limit 1`;
         conn.connect().query(query, (err, result)=>{
             console.log(err, result)
             if(err || !result.length){

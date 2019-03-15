@@ -19,10 +19,10 @@ app.use('/api', user)
 app.use('/api', auth)
 
 app.get('*', (req, res)=>{
-    res.sendfile('./dist/index.html');
+    res.sendfile('../dist/index.html');
 })
 
-app.listen(3000, function(e){
+app.listen(3001, function(e){
     conn.disconnect()
-    console.log("app started to work on localhost:3000")
+    console.log("app started to work on localhost:3001")
 })
